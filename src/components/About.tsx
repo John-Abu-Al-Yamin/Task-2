@@ -5,6 +5,7 @@ import mediaForm from "../images/partners/mediaturtles logo.svg";
 export default function About() {
   return (
     <Section className="bg-[#07302B] py-24">
+      
       <div className="container grid lg:grid-cols-2 gap-16">
         <div className="space-y-8">
           <h2 className="text-4xl font-bold">المنتدى السعودي للإعلام 2025</h2>

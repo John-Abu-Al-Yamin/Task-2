@@ -1,6 +1,7 @@
 import { Section } from './ui/Section';
 import { AwardCard } from './ui/AwardCard';
-import awardsImage from "../images/awards/frame.svg"; 
+import { motion } from 'framer-motion';
+import awardsImage from "../images/awards/frame.svg";
 
 const awards = [
   {
@@ -15,7 +16,7 @@ const awards = [
   },
   {
     title: 'الصحافة',
-    description: 'تتويج افضل الاعمال الصحفية وأكثر الصحفيين و المراسلين نشاطا وتأثيرا في انتاج محتوى إعلامي مميز' ,
+    description: 'تتويج افضل الاعمال الصحفية وأكثر الصحفيين و المراسلين نشاطا وتأثيرا في انتاج محتوى إعلامي مميز',
     image: awardsImage
   },
   {
@@ -34,8 +35,16 @@ export default function Awards() {
           جائزة المنتدى السعودي للإعلام تُكرّم وتتوج المبدعين والمتميزين في صناعة المحتوى الإعلامي
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {awards.map((award) => (
-            <AwardCard key={award.title} {...award} image={award.image} />
+          {awards.map((award, index) => (
+            <motion.div
+              key={award.title}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: false, amount: 0.5 }} // إعادة تشغيل الأنيميشن عند الظهور
+            >
+              <AwardCard {...award} image={award.image} />
+            </motion.div>
           ))}
         </div>
       </div>

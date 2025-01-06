@@ -1,66 +1,10 @@
 import { useState } from "react";
-import { Globe, Menu, ChevronUp, ChevronDown } from "lucide-react";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Exhibition from "./components/Exhibition";
-import Awards from "./components/Awards";
-import WhyAttend from "./components/WhyAttend";
-import Partners from "./components/Partners";
-import Footer from "./components/Footer";
-import logoAr from "../src/images/logoAr.svg";
-import NewsSlider from "./components/NewsSlider";
-import Navbar from "./components/Navbar";
+import { ChevronDown } from "lucide-react";
 
-function App() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = ({ navItems }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const handleScroll = () => {
-    if (window.scrollY > 300) {
-      setShowScrollTop(true);
-    } else {
-      setShowScrollTop(false);
-    }
-  };
-
-  window.addEventListener("scroll", handleScroll);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const navItems = [
-    {
-      name: "الرئيسية",
-      active: true,
-      items: [
-        "عن المنتدى",
-        "رسالة المنتدى",
-        "المتحدثون",
-        "جلسات المنتدى",
-        "أسئلة عن المنتدى",
-      ],
-    },
-    {
-      name: "المعرض",
-      active: false,
-      items: ["معرض الإعلام", "العارضون", "خريطة المعرض"],
-    },
-    {
-      name: "جائزة المنتدى",
-      active: false,
-      items: ["عن الجائزة", "الفئات", "التحكيم"],
-    },
-    {
-      name: "أخرى",
-      active: false,
-      items: ["الرعاة", "تواصل معنا", "الأسئلة الشائعة"],
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#242424] text-white">
       <header className="fixed top-0 right-0 w-full z-50 ">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -164,31 +108,8 @@ function App() {
           )}
         </div>
       </header>
-
-      <main>
-        {/* <Navbar navItems={navItems} /> */}
-        <Hero />
-        <NewsSlider />
-        <About />
-        <Exhibition />
-        <Awards />
-        <WhyAttend />
-        <Partners />
-      </main>
-
-      <Footer />
-
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 left-6 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50 flex flex-col items-center"
-        >
-          <ChevronUp className="h-5 w-5 animate-bounce" />
-          <span className="text-xs font-semibold">العودة للأعلى</span>
-        </button>
       )}
-    </div>
   );
-}
+};
 
-export default App;
+export default Navbar;
