@@ -1,11 +1,12 @@
 import { Section } from './ui/Section';
+import heroLogo from "../images/heroLogo.svg";
 
 export default function Exhibition() {
   return (
     <Section className="bg-[#07302B]">
       <div className="container text-center">
         <img 
-          src="/images/heroLogo.svg" 
+          src={heroLogo} 
           alt="FOMEX"
           className="mx-auto mb-8 h-12"
         />
